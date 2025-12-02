@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مشروع الاستدامة - كفرنجة الثانوية</title>
     <link rel="stylesheet" href="stylesheet1.css">
+	<!-- داخل <head> -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
 </head>
 <body>
 	<!-- شريط التنقل (تأكد من وجود الرابط) -->
@@ -248,10 +253,16 @@
         </div>
     </section>
 
+
     <!-- قسم أبرز المتفاعلين -->
     <section class="top-participants" id="participants">
         <h2>أبرز المتفاعلين هذا الشهر</h2>
         <div class="participants-gallery">
+          <section class="top-participants" id="participants">
+    <!-- المشاركون سيتم تحميلهم تلقائيًا هنا -->
+    <p> سيتم عرض المشاركين البارزين عندما تتم التصفية 😊🌳</p>
+</section>
+<!--
 	<div class="participant-gallery-item">
 		<div class="participant-image-container">
 			<img src="imges/participant1.jpg" alt="طالبة النور">
@@ -288,11 +299,8 @@
 		</div>
 	</div>
 
-
-
 </div>
-    </section>
-
+    </section>-->
     <!-- قسم مهمة الكوكب الأخضر (اللعبة التفاعلية) -->
     <section id="green-mission" aria-label="مهمة الكوكب الأخضر" class="game-section">
       <div class="game-wrapper">
@@ -770,7 +778,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<script>
+function fetchParticipants() {
+  fetch('/get-latest-participants')  // استبدلي هذا بالرابط على سيرفرك
+    .then(response => response.json())
+    .then(data => {
+      // data.html يحتوي على الكود الكامل لقائمة المشاركين
+      document.getElementById('participants').innerHTML = data.html;
+    })
+    .catch(err => console.error('خطأ في تحميل المشاركين:', err));
+}
+
+// استدعاء التحديث أول مرة عند تحميل الصفحة
+fetchParticipants();
+
+// تحديث تلقائي كل 5 ثواني
+setInterval(fetchParticipants, 5000);
+</script>
 
 </body>
 </html>
+
 
