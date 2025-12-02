@@ -1,0 +1,1147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #ffffff;
+  padding-top: 64px; /* ضبط بسيط، غيّر القيمة إذا كان الشريط أطول/أقصر */
+}
+
+/* شريط التنقل - لون بني متناسق */
+:root {
+  --nav-brown: #8B5A2B; /* brown */
+  --nav-brown-rgb: 139,90,43;
+}
+
+/* شريط التنقل ثابت أعلى الصفحة */
+.navbar {
+  /* اجعل الخلفية أكثر شفافية مع الحفاظ على تأثير التمويه */
+  background-color: rgba(139,90,43,0.18); /* بنّي شفاف */
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1100;
+  border-bottom: 1px solid rgba(139,90,43, 0.08);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* عنوان صغير على اليمين (يمكن إخفاؤه إذا لم ترغب به) */
+.nav-title {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: 0.95;
+  /* أخفيه في الوضع الافتراضي، يظهر حسب الحاجة */
+  display: none;
+}
+
+/* روابط القائمة - سطح المكتب */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  transition: background 0.18s ease, color 0.18s ease;
+  font-size: 0.95rem; /* أصغر قليلاً */
+}
+
+/* اضف نبتة قبل كل رابط (ديكور) */
+.nav-links a::before {
+  content: "🌿";
+  display: inline-block;
+  /* في اتجاه RTL النبتة ستظهر مجاورة للاسم بشكل ملائم */
+  margin-left: 0.6rem;
+  margin-right: 0;
+  font-size: 1.05rem;
+  line-height: 1;
+  vertical-align: middle;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+  opacity: 1; /* واضح دائماً */
+  /* pointer-events none لعدم تأثيرها على التفاعل */
+  pointer-events: none;
+}
+
+/* تأثير صغير عند المرور لإبراز النبتة */
+.nav-links a:hover::before,
+.nav-links a:focus::before {
+  transform: translateY(-3px) scale(1.05);
+  opacity: 1;
+}
+
+/* زر الهامبرغر - مخفي على الشاشات الكبيرة */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #ffffffcc;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+/* Mobile: اجعل الهامبرغر مرئياً والقائمة مخفية افتراضياً */
+@media (max-width: 880px) {
+  .nav-title { display: block; }
+
+  .nav-toggle { display: inline-flex; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: rgba(var(--nav-brown-rgb), 0.95);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    gap: 0;
+    padding: 0.75rem 1rem;
+    transform-origin: top right;
+    display: none; /* مخفية حتى تفتح */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 1rem;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* اجعل زر الهامبرغر يتغير بصرياً عند الفتح */
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+/* أدوات تغيير حجم الخط - مثبتة في الأسفل (مناسبة للموبايل) */
+.font-size-control {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1200;
+  display: flex;
+  gap: 10px;
+  background: rgba(255,255,255,0.02); /* شفافية خفيفة في حال تريد تباين */
+  padding: 6px;
+  border-radius: 999px;
+  /* ظل خفيف لتمييزه عن المحتوى */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  touch-action: manipulation;
+}
+
+/* أزرار حجم الخط - منطقة لمس كبيرة وواضحة */
+.font-size-control .font-btn {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.font-size-control .font-btn:active,
+.font-size-control .font-btn:focus {
+  transform: translateY(1px);
+  outline: none;
+}
+
+/* قسم البطل */
+.hero {
+  height: calc(100vh - 64px); /* يقل طول الـ hero بقيمة ارتفاع الشريط */
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-overlay p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* قسم تعريفي */
+.about-section {
+  position: relative; /* لاحتواء الخلفية pseudo-element */
+  padding: 3rem 2rem;
+  background-color: white;
+  overflow: visible;
+}
+
+/* محتوى داخل القسم فوق الخلفية */
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr; /* المحتوى يأخذ العرض الكامل */
+  gap: 1.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1; /* فوق صورة الخلفية */
+}
+
+/* إن بقيت قاعدة .about-image، نخفيها لتجنب ظهور عنصر img */
+.about-image {
+  display: none !important; /* منع أي ظهور لبقايا وسم الشعار إن بقي */
+}
+
+/* نص ومحتوى القسم يملك خلفية شفافة لضمان الوضوح */
+.about-content {
+  padding: 0.8rem 1rem;
+  background: transparent;
+}
+
+/* تهيئة الحركة فقط عندما يعمل JS */
+.animate .about-section .fly-item {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.995);
+  transition: transform 520ms cubic-bezier(.2,.9,.25,1), opacity 520ms ease;
+}
+
+/* عندما يدخل القسم للعرض تصبح العناصر مستقرة */
+.about-section.in-view .fly-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* تحسين أداء اللمس والرسوم */
+.about-section .fly-item {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* تخصيص أخف للحركات على الشاشات الصغيرة */
+@media (max-width: 480px) {
+  .animate .about-section .fly-item {
+    transform: translateY(-18px) scale(0.997);
+    transition-duration: 420ms;
+  }
+}
+
+/* Responsive: تصغير الخلفية على الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .about-section::before {
+    width: 38%;
+    opacity: 0.10;
+    right: 8px;
+    top: 10%;
+    transform: none;
+    filter: contrast(1.03) saturate(1.02);
+  }
+  .about-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section::before {
+    display: none; /* إخفاء الخلفية على أصغر الشاشات للحفاظ على وضوح النص */
+  }
+}
+
+/* تحسين التباعد للمحتوى المجاور */
+.about-content {
+  padding: 0.6rem 0.8rem;
+}
+
+.about-content h2 {
+  color: #2e7d32;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.about-content h3 {
+  color: #1b5e20;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.about-content p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.about-content ul {
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-content li {
+  margin-bottom: 0.5rem;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.team-member {
+  background-color: #e8f5e9;
+  padding: 1rem;
+  border-radius: 5px;
+  border-right: 3px solid #2e7d32;
+}
+
+.team-member strong {
+  color: #2e7d32;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* قسم الميزات */
+.features {
+  padding: 3rem 2rem;
+  background-color: #f1f8e9;
+}
+
+.section-title {
+  text-align: center;
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.feature-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.feature-item h3 {
+  color: #1b5e20;
+  padding: 1rem 1rem 0.5rem;
+  font-size: 1.25rem;
+}
+
+.feature-item p {
+  padding: 0 1rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* قسم المشروع المستدام */
+.sustainable-project {
+  padding: 3rem 2rem;
+  background-color: white;
+}
+
+.project-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-content h2 {
+  color: #1b5e20;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.project-content p {
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+/* قسم التحدي الشهري */
+.monthly-challenge {
+  padding: 3rem 2rem;
+  background-color: #f1f8e9;
+}
+
+.challenge-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.challenge-content h2 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.challenge-content h3 {
+  color: #1b5e20;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.challenge-content p {
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.challenge-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* تمييز خانة التحدي الشهري */
+.highlight-challenge {
+  background: linear-gradient(180deg, rgba(240,255,246,0.9), rgba(230,250,238,0.9));
+  border-left: 6px solid #2e7d32;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(21, 84, 50, 0.06);
+  position: relative;
+  overflow: visible;
+}
+
+/* الشارة */
+.highlight-challenge .challenge-badge {
+  display: inline-block;
+  background: linear-gradient(90deg,#ffdd57,#ffb547);
+  color: #1b1b1b;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin: 10px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+/* شريط التقدم */
+.highlight-challenge .challenge-progress {
+  background: rgba(0,0,0,0.06);
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 12px 0 10px;
+}
+.highlight-challenge .challenge-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg,#2e7d32,#66bb6a);
+  border-radius: 999px;
+  transition: width 800ms cubic-bezier(.2,.9,.25,1);
+}
+
+/* أزرار إضافية داخل التحدي */
+.highlight-challenge .challenge-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.highlight-challenge .btn-primary {
+  background: #2e7d32;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(46,125,50,0.12);
+}
+.highlight-challenge .btn-primary:hover { transform: translateY(-2px); background:#256128; }
+.highlight-challenge .btn-secondary {
+  background: #fff;
+  color: #2e7d32;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(46,125,50,0.08);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* responsive: يقلّل المساحات على الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .highlight-challenge { padding: 1rem; }
+  .highlight-challenge .challenge-actions { gap: 8px; }
+  .highlight-challenge .challenge-badge { font-size: 0.85rem; padding: 5px 8px; }
+}
+
+/* احترام تفضيل خفض الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .highlight-challenge .challenge-progress-bar { transition: none !important; }
+}
+
+/* أزرار (لون أخضر جديد موحّد) */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #2e7d32; /* أخضر رئيسي */
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.12);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #225b20; /* أخضر داكن عند المرور/التركيز */
+  transform: translateY(-2px);
+}
+
+/* أزرار ثانوية */
+.btn-primary {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1b5e20;
+}
+
+.btn-secondary {
+  background-color: #66bb6a;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #4caf50;
+}
+
+/* زر الفيديو: أخضر + تلميح نبتة عند التحويم/التركيز */
+.feature-item .btn-video {
+  display: inline-block;
+  padding: 10px 18px;
+  margin: 12px 16px 20px 16px;
+  background: #43a047; /* أخضر لفات الزر الفيديو */
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  position: relative; /* ضروري لوضع التلميح مطلقا */
+  z-index: 2;
+}
+
+.feature-item .btn-video:hover,
+.feature-item .btn-video:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  background: #388e3c;
+}
+
+/* تلميح النبتة: يظهر عند hover / focus */
+.feature-item .btn-video::after {
+  content: '🌱 انقر لمشاهدة الفيديو';
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px) scale(0.95);
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 0.95rem;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* سهم مائل بسيط للتلميح */
+.feature-item .btn-video::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(0,0,0,0.8);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  border-radius: 2px;
+}
+
+/* إظهار التلميح عند التفاعل */
+.feature-item .btn-video:hover::after,
+.feature-item .btn-video:focus::after,
+.feature-item .btn-video:hover::before,
+.feature-item .btn-video:focus::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* Responsive: تقليل حجم التلميح على الشاشات الصغيرة */
+@media (max-width: 480px) {
+  .feature-item .btn-video::after {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+    bottom: calc(100% + 8px);
+  }
+  .feature-item .btn-video {
+    margin: 10px 12px;
+    padding: 9px 14px;
+  }
+}
+
+/* قسم الخريطة */
+.map-section {
+  padding: 3rem 2rem;
+  background-color: white;
+}
+
+.map-section h2 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.map-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* قسم أبرز المتفاعلين */
+.top-participants {
+  padding: 3rem 2rem;
+  background-color: #f1f8e9;
+}
+
+.top-participants h2 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.participants-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.participant-gallery-item {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.participant-gallery-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.participant-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+}
+
+.participant-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.participant-gallery-item:hover .participant-image-container img {
+  transform: scale(1.05);
+}
+
+.participant-info {
+  padding: 1.5rem;
+}
+
+.participant-info h3 {
+  color: #2e7d32;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.participant-info .school {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.participant-info .description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  min-height: 70px;
+}
+
+.achievement-badge {
+  display: inline-block;
+  background-color: #aed581;
+  color: #1b5e20;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* قسم التذييل */
+.footer {
+  background-color: #2e7d32;
+  color: white;
+  padding: 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.footer-info h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: inline-block;
+}
+
+.social-icon img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.social-icon:hover img {
+  transform: scale(1.2);
+}
+
+.footer-copyright {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design للهواتف */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-links li {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+
+  .about-container,
+  .project-container,
+  .challenge-container {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .font-size-control,
+  .text-reader {
+    top: auto;
+    bottom: 20px;
+    right: auto;
+    left: 20px;
+    flex-direction: row;
+    transform: none;
+  }
+
+  .team-list {
+    grid-template-columns: 1fr;
+  }
+
+  .participants-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .participant-image-container {
+    height: 200px;
+  }
+
+  .participant-info {
+    padding: 1rem;
+  }
+
+  .top-participants h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .participants-gallery {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .participant-image-container {
+    height: 180px;
+  }
+
+  .participant-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .participant-info .description {
+    font-size: 0.85rem;
+    min-height: 60px;
+  }
+
+  .about-section,
+  .features,
+  .sustainable-project,
+  .monthly-challenge,
+  .map-section,
+  .top-participants {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Video sections - same height as hero and responsive */
+.video-section {
+  position: relative;
+  width: 100%;
+  /* match hero height (if navbar fixed at 64px adjust accordingly) */
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* خلفية أسود أثناء تحميل الفيديو */
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  max-width: 1600px; /* optional limit for very wide screens */
+}
+
+.video-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Slight overlay spacing for the sustainability video if needed */
+.video-section.sustainability {
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02));
+}
+
+/* On small screens reduce height for better UX */
+@media (max-width: 768px) {
+  .video-section {
+    height: 60vh;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .video-section,
+  .video-container,
+  .video-embed {
+    transition: none !important;
+  }
+}
+
+/* أنماط مهمة الكوكب الأخضر (محددة بالمعرف green-mission) */
+#green-mission { padding: 2rem 1rem; background: linear-gradient(135deg,#e0f7e4,#c2e9c9); }
+#green-mission .game-wrapper { max-width: 1100px; margin: 0 auto; text-align: center; }
+#green-mission .game-title { font-size: 2rem; color: #1b7d41; margin-bottom: 1rem; text-shadow: 2px 2px #d9f5de; }
+
+/* scoped styles (copied/adapted) */
+#green-mission .game-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  width: 70%;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  animation: fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+#green-mission .gm-question { font-size: 1.4rem; margin-bottom: 18px; }
+#green-mission .gm-timer, #green-mission .gm-score { font-weight:700; color:#0d6533; margin-bottom:10px; }
+
+/* خيارات الاجابات */
+#green-mission .gm-options { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+#green-mission .option {
+  background: #e9f7ef;
+  padding: 12px 16px;
+  margin: 6px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s;
+  border: 2px solid transparent;
+  min-width: 42%;
+  box-sizing: border-box;
+}
+#green-mission .option:hover { transform: scale(1.03); border-color:#2a7d41; }
+
+/* حالات صحيحة/خاطئة */
+#green-mission .option.correct { background:#a7f3a5; border-color:#2a7d41; }
+#green-mission .option.wrong { background:#f8a5a5; border-color:#c12b2b; }
+
+/* Alert + end screen */
+#green-mission .alert-box { display:none; background:#fff3cd; color:#856404; padding:10px 15px; margin:12px auto; border-radius:12px; width:70%; border:1px solid #ffeeba; font-size:1rem; }
+#green-mission .end-screen { display:none; margin-top:18px; background:#f2f9f2; border:2px solid #1b7d41; padding:20px; border-radius:12px; }
+
+/* Responsive game adjustments */
+@media (max-width:768px){
+  #green-mission .game-box { width: 94%; padding:18px; }
+  #green-mission .option { min-width:100%; }
+  .nav-links a { font-size: 0.9rem; }
+}
+
+/* end game styles */
+
+/* Project link button inside participants */
+.participant-info .project-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.project-link-btn {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+
+.project-link-btn:hover { background: #225b20; transform: translateY(-1px); }
+
+.project-link-btn.has-link {
+  background: #156515;
+}
+
+.project-link {
+  display: inline-block;
+  color: #1b5e20;
+  text-decoration: none;
+  background: #e8f5e9;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(27,94,32,0.08);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* زر نموذج رفع المشروع - بنفس نمط أزرار Google Forms */
+.btn-project-form {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #2e7d32;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.12s ease;
+  margin-top: 8px;
+}
+
+.btn-project-form:hover {
+  background-color: #225b20;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>مهمة الكوكب الاخضر  🌱</title>
+
+<style>
+body {
+    font-family: "Cairo", sans-serif;
+    background: linear-gradient(135deg, #e0f7e4, #c2e9c9);
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #1b7d41;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px #d9f5de;
+}
+
+.game-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 25px;
+    width: 70%;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    animation: fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+#question {
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.option {
+    background: #e9f7ef;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.option:hover {
+    transform: scale(1.05);
+    border-color: #2a7d41;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.option.correct { background-color: #a7f3a5; border-color: #2a7d41; }
+.option.wrong { background-color: #f8a5a5; border-color: #c12b2b; }
+
+#timer {
+    font-size: 22px;
+    margin: 10px;
+    color: #0d6533;
+    font-weight: bold;
+}
+
+#score {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #1b7d41;
+}
+
+#end-screen {
+    display: none;
+    margin-top: 50px;
+    background: #f2f9f2;
+    border: 2px solid #1b7d41;
+    padding: 30px;
+    border-radius: 25px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 1s ease;
+}
+
+#end-screen h2 {
+    font-size: 32px;
+    color: #1b7d41;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+#restart-btn {
+    padding: 12px 30px;
+    font-size: 20px;
+    background: #1b7d41;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+#restart-btn:hover {
+    background: #145c31;
+}
+
+.alert-box {
+    display: none;
+    background: #fff3cd;
+    color: #856404;
+    padding: 10px 15px;
+    margin: 20px auto 10px auto;
+    border-radius: 12px;
+    width: 60%;
+    border: 1px solid #ffeeba;
+    font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<h1>تحدي أهداف الاستدامة 🌱🌍</h1>
+
+<div class="game-box">
+    <div id="timer">الوقت 15 ثانية</div>
+    <div id="question"></div>
+    <div id="options"></div>
+    <div id="score"></div>
+</div>
+
+<div id="alert" class="alert-box"></div>
+
+<div id="end-screen">
+    <h2 id="end-message"></h2>
+    <button id="restart-btn">اعادة اللعب 🔁</button>
+</div>
+
+<script>
+const goals = [
+"القضاء على الفقر",
+"القضاء على الجوع",
+"الصحة الجيدة والرفاه",
+"التعليم الجيد",
+"المساواة بين الجنسين",
+"المياه النظيفة والنظافة الصحية",
+"الطاقة النظيفة وبأسعار معقولة",
+"العمل اللائق ونمو الاقتصاد",
+"الصناعة والابتكار والبنية التحتية",
+"الحد من اوجه عدم المساواة",
+"المدن والمجتمعات المستدامة",
+"الاستهلاك والانتاج المسؤولان",
+"العمل المناخي",
+"الحياة تحت الماء",
+"الحياة في البر",
+"السلام والعدل والمؤسسات القوية",
+"الشراكات لتحقيق الاهداف"
+];
+
+const questions = [
+{ q:"ما الهدف الذي يركز على انهاء الفقر", a:"القضاء على الفقر" },
+{ q:"اي هدف يعمل على القضاء على الجوع عالميا", a:"القضاء على الجوع" },
+{ q:"اي هدف يسعى لتحسين صحة الانسان ورفاهيته", a:"الصحة الجيدة والرفاه" },
+{ q:"اي هدف يهدف لرفع جودة التعليم للجميع", a:"التعليم الجيد" },
+{ q:"اي هدف يركز على حماية الحياة البرية", a:"الحياة في البر" },
+{ q:"ما الهدف الذي يعالج مسالة تغير المناخ", a:"العمل المناخي" },
+{ q:"اي هدف يعزز حصول الجميع على مياه نظيفة", a:"المياه النظيفة والنظافة الصحية" },
+{ q:"ما الهدف الذي يحمي المحيطات والبحار", a:"الحياة تحت الماء" },
+{ q:"اي هدف يسعى لتطوير الصناعة والابتكار", a:"الصناعة والابتكار والبنية التحتية" },
+{ q:"اي هدف يعزز المدن والمجتمعات المستدامة", a:"المدن والمجتمعات المستدامة" },
+{ q:"اي هدف يركز على الشراكات لتحقيق الاهداف", a:"الشراكات لتحقيق الاهداف" },
+{ q:"اي هدف يعمل على المساواة بين الجنسين", a:"المساواة بين الجنسين" }
+];
+
+let currentIndex = 0;
+let score = 0;
+let timer;
+let timeLeft = 15;
+
+const qEl = document.getElementById("question");
+const optEl = document.getElementById("options");
+const timerEl = document.getElementById("timer");
+const scoreEl = document.getElementById("score");
+const endScreen = document.getElementById("end-screen");
+const endMsg = document.getElementById("end-message");
+const alertBox = document.getElementById("alert");
+
+function startGame(){
+    currentIndex = 0;
+    score = 0;
+    shuffleArray(questions);
+    endScreen.style.display = "none";
+    document.querySelector(".game-box").style.display = "block";
+    scoreEl.textContent = `النتيجة ${score}`;
+    hideAlert();
+    loadQuestion();
+}
+
+function loadQuestion(){
+    if(currentIndex >= questions.length){
+        endGame();
+        return;
+    }
+
+    const q = questions[currentIndex];
+    qEl.textContent = q.q;
+    optEl.innerHTML = "";
+    let options = [q.a];
+
+    while(options.length < 4){
+        let randomGoal = goals[Math.floor(Math.random()*goals.length)];
+        if(!options.includes(randomGoal)) options.push(randomGoal);
+    }
+
+    shuffleArray(options);
+
+    options.forEach(opt=>{
+        const btn = document.createElement("div");
+        btn.className = "option";
+        btn.textContent = opt;
+        btn.onclick = ()=> checkAnswer(opt, btn);
+        optEl.appendChild(btn);
+    });
+
+    resetTimer();
+}
+
+function resetTimer(){
+    clearInterval(timer);
+    timeLeft = 15;
+    timerEl.textContent = `الوقت ${timeLeft} ثانية`;
+
+    timer = setInterval(()=>{
+        timeLeft--;
+        timerEl.textContent = `الوقت ${timeLeft} ثانية`;
+        if(timeLeft <=0){
+            clearInterval(timer);
+            markWrong(null);
+            showAlert("انتهى الوقت حاول تركز شوي");
+            currentIndex++;
+            setTimeout(loadQuestion, 1000);
+        }
+    },1000);
+}
+
+function checkAnswer(answer, btn){
+    clearInterval(timer);
+    const correct = questions[currentIndex].a;
+
+    if(answer === correct){
+        btn.classList.add("correct");
+        score++;
+        scoreEl.textContent = `النتيجة ${score}`;
+    } else {
+        btn.classList.add("wrong");
+        markWrong(correct);
+        showAlert("اوه لا اجابتك خاطئة حاول ان تكون اسرع");
+    }
+
+    setTimeout(()=>{
+        currentIndex++;
+        loadQuestion();
+    },800);
+}
+
+function markWrong(correct){
+    if(correct){
+        Array.from(document.getElementsByClassName("option")).forEach(opt=>{
+            if(opt.textContent === correct){
+                opt.classList.add("correct");
+            }
+        });
+    }
+}
+
+function endGame(){
+    document.querySelector(".game-box").style.display = "none";
+    endScreen.style.display = "block";
+
+    if(score > 6){
+        endMsg.textContent = `لقد اجبت على ${score} اسئلة صحيحة تهانينا انت ملك الاستدامة 🏆`;
+    } else {
+        endMsg.textContent = `لقد اجبت على ${score} اسئلة صح لا تحزن جرب مرة اخرى 😂`;
+    }
+}
+
+
+function showAlert(message){
+    alertBox.textContent = message;
+    alertBox.style.display = "block";
+    setTimeout(hideAlert, 2000);
+}
+
+function hideAlert(){
+    alertBox.style.display = "none";
+}
+
+document.getElementById("restart-btn").onclick = startGame;
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        let j=Math.floor(Math.random()*(i+1));
+        [array[i],array[j]] = [array[j],array[i]];
+    }
+}
+
+startGame();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع الاستدامة - كفرنجة الثانوية</title>
+    <link rel="stylesheet" href="stylesheet1.css">
+</head>
+<body>
+	<!-- شريط التنقل (تأكد من وجود الرابط) -->
+	<nav class="navbar" role="navigation" aria-label="Main navigation">
+		<div class="nav-inner">
+			<!-- اسم/لوغو مختصر إذا رغبت -->
+			<div class="nav-title" aria-hidden="true">Sustainajloun</div>
+
+			<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="قائمة التنقل">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</button>
+
+			<ul id="primary-menu" class="nav-links" role="menubar">
+				<li role="none"><a role="menuitem" href="#home">الرئيسية</a></li>
+				<li role="none"><a role="menuitem" href="#about">عن المشروع</a></li>
+				<li role="none"><a role="menuitem" href="#features">أهداف الاستدامه</a></li>
+				<li role="none"><a role="menuitem" href="#sustainable">مشروعي</a></li>
+				<li role="none"><a role="menuitem" href="#challenge">التحدي</a></li>
+				<li role="none"><a role="menuitem" href="#map">الخريطة</a></li> <!-- new -->
+				<li role="none"><a role="menuitem" href="#participants">المشاركين المتميزين</a></li> <!-- new -->
+				<li role="none"><a role="menuitem" href="#green-mission">مهمة الكوكب الأخضر</a></li> <!-- new -->
+				<li role="none"><a role="menuitem" href="#contact">تواصل معنا</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <!-- خانة تكبير وتصغير الخط -->
+    <div class="font-size-control" aria-hidden="false" role="group" aria-label="أدوات حجم الخط">
+        <button class="font-btn increase" onclick="changeFontSize(true)" aria-label="تكبير الخط">+</button>
+        <button class="font-btn decrease" onclick="changeFontSize(false)" aria-label="تصغير الخط">-</button>
+    </div>
+
+    <!-- قسم البطل (يغطي كامل الواجهة) -->
+    <section class="hero" id="home">
+        <img src="images/hero.jpg" alt="صورة الغلاف" class="hero-image">
+        <div class="hero-overlay">
+            <h1>  يا هلا بالنشامى.. إيد بإيد، من المدرسة للحارة، تظل ديرتنا خضرا وعامرة.  </h1>
+        </div>
+    </section>
+
+    <!-- قسم تعريفي: استخدم الخلفية للشعار بدلاً من وسم الصورة -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <!-- تم إزالة وسم الشعار هنا -->
+            <div class="about-content">
+                <h2 class="fly-item">عن المشروع</h2>
+                <p class="fly-item">مشروع مستدام يهدف إلى نشر الوعي البيئي وتطبيق مبادئ الاستدامة في مدرسة كفرنجة الثانوية الشاملة للبنات.</p>
+                <h3>الأهداف</h3>
+                <ul>
+                    <li class="fly-item">تعزيز الوعي البيئي لدى الطلبة والمدارس والمجتمع المحلي</li>
+                    <li class="fly-item">تطبيق مبادئ الاستدامة في الحياة اليومية</li>
+                    <li class="fly-item">المساهمة في حماية البيئة والموارد الطبيعية</li>
+                    <li class="fly-item">بناء جيل مسؤول عن حماية الكرة الأرضية</li>
+                </ul>
+
+                <h3>فريق المشروع</h3>
+                <div class="team-list">
+                    <div class="team-member fly-item">
+                        <strong>سحر فريحات</strong>
+                        <p>معلمة مشرفة على المشروع</p>
+                    </div>
+                    <div class="team-member fly-item">
+                        <strong>إسراء خطاطبة</strong>
+                        <p>معلمة مشرفة على المشروع</p>
+                    </div>
+                    <div class="team-member fly-item">
+                        <strong>أحلام عنانزة</strong>
+                        <p>قائد الفريق - مطور الويب</p>
+                    </div>
+                    <div class="team-member fly-item">
+                        <strong>ريتاج شويات</strong>
+                        <p>مساعد في التطوير</p>
+                    </div>
+                    <div class="team-member fly-item">
+                        <strong>ملك القعقاع</strong>
+                        <p>مساعد في التطوير </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الميزات (17 عنصر متكرر) -->
+    <section class="features" id="features">
+        <h2 class="section-title">أهداف الاستدامه</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <img src="images/صورة القضاء على الفقر .png" alt="الهدف 1">
+                <h3> القضاء على الفقر </h3>
+                <p>الهدف هو القضاء على الفقر بجميع أشكاله في كل مكان، ويمكن تحقيق ذلك من خلال دعم الأسر الريفية المنتجة في عجلون لتسويق منتجاتهم الزراعية والحرفية مثل الزيتون والعسل.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/kcKugjcQKnU?si=HPk4aXdnb-T8eH3E" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/صورة للقضاء على الجوع .png" alt="الهدف 2">
+                <h3>القضاء على الجوع  </h3>
+                <p>الهدف هو ضمان الأمن الغذائي وتحسين التغذية وتعزيز الزراعة المستدامة، مثل إنشاء مزارع صغيرة لإنتاج الخضار والفواكه وتوزيعها على المدارس المحلية في عجلون.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/UKnL9BDZE54?si=5BYXB2BaeGdE3T5R" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/الصحة الجيدة والرفاهية.png" alt="الهدف 3">
+                <h3>الصحة الجيدة والرفاهية</h3>
+                <p>الهدف هو ضمان حياة صحية وتعزيز الرفاهية لجميع الأعمار، مثل تنظيم حملات فحص دوري للأمراض المزمنة في المراكز الصحية في القرى.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/SP8olVdZCLw?si=LYOTsqRoWmz9Drwa" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/التلعم الجيد.png" alt="الهدف 4">
+                <h3>التعليم الجيد  </h3>
+                <p>الهدف هو ضمان التعليم الشامل والمنصف وتعزيز فرص التعلم مدى الحياة، مثل توفير دورات تدريبية رقمية للشباب في مراكز المجتمع المحلي. </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/MA3n4x3llA8?si=s5nUASdeOLQsepeP" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/المساواة بين الرجل والمراءة .png" alt="الهدف 5">
+                <h3>المساواة بين الجنسين </h3>
+                <p>الهدف هو تحقيق المساواة وتمكين النساء والفتيات في جميع المجالات، مثل دعم مشاريع نسائية صغيرة كالورش الحرفية والمنتجات الغذائية المنزلية.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/xQGatNPfzIk?si=KzGZfLc2LdFGLpWc" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/المياه الصحيه .png" alt="الهدف 6">
+                <h3>المياه النظيفة والنظافة الصحية </h3>
+                <p>الهدف هو ضمان توفير المياه الصالحة للشرب وإدارتها بشكل مستدام، مثل تحسين آبار المياه وخزانات جمع مياه الأمطار في القرى.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/iTDkEYwFW10?si=KIINMynhF0GmgrkE" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/طاقه نظيفه .png" alt="الهدف 7">
+                <h3>الطاقة النظيفة وبأسعار معقولة </h3>
+                <p>الهدف هو ضمان الوصول إلى الطاقة المستدامة بأسعار مناسبة للجميع، مثل تركيب ألواح شمسية للمنازل والمراكز المجتمعية في المناطق النائية.   </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/byLSEAlttCM?si=4iL_No1-MkP-bibj" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/العمل اللائق .png" alt="الهدف 8">
+                <h3>العمل اللائق ونمو الاقتصاد </h3>
+                <p>الهدف هو تعزيز النمو الاقتصادي المستدام وتوفير فرص العمل اللائق للجميع، مثل تدريب الشباب على مهارات ريادة الأعمال وإنشاء مشاريع صغيرة في السياحة البيئية.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/727GHQjIOzE?si=VNSbyQTstz9oMnV4" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/الابتكار .png" alt="الهدف 9">
+                <h3>الصناعة والابتكار والهياكل الأساسية  </h3>
+                <p>الهدف هو بناء بنية تحتية مستدامة وتشجيع الابتكار وتعزيز التصنيع المحلي، مثل إنشاء ورش تصنيع الحرف اليدوية وتطوير منتجات مبتكرة للسوق السياحي. </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/UyyXCiSTNwE?si=iHlOEnQRVsspCTiy" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/Screenshot 2025-12-01 005903.png" alt="الهدف 10">
+                <h3> الحد من أوجه عدم المساواة  </h3>
+                <p>الهدف هو تقليل الفجوات الاجتماعية والاقتصادية بين الأفراد والمجتمعات، مثل تقديم منح تعليمية للشباب من الأسر محدودة الدخل لمواصلة الدراسة. </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/agTJqNen1ss?si=ayx1eJ5UR6pwItue" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/الاستدامه الخضراء .png" alt="الهدف 11">
+                <h3>المدن والمجتمعات المستدامة</h3>
+                <p>الهدف هو جعل المدن والمجتمعات شاملة وآمنة ومرنة ومستدامة، مثل إنشاء حدائق عامة ومسارات مشاة في مركز المدينة لتعزيز جودة الحياة.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/cmO9mxl-UQE?si=ssG6RwEJyijH1AIx" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/Screenshot 2025-12-01 010221.png" alt="الهدف 12">
+                <h3>الاستهلاك والإنتاج المسؤولان</h3>
+                <p>الهدف هو ضمان أنماط استهلاك وإنتاج مستدامة، مثل تشجيع إعادة تدوير المخلفات في المدارس والمنازل واستخدام منتجات صديقة للبيئة. </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/fLwg6LEFkUE?si=JmoDJ6cDJaSH5xDE" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/العمل المناخي .png" alt="الهدف 13">
+                <h3>العمل المناخي </h3>
+                <p>الهدف هو اتخاذ إجراءات عاجلة لمكافحة تغير المناخ وآثاره، مثل تنظيم حملات تشجير على سفوح جبال عجلون للحفاظ على الغابات.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/_bCRZdKEaQ4?si=xfMYJaMzQvOwpgwb" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/الحياه تحت المي .png" alt="الهدف 14">
+                <h3>images/الحياه تحت المي .png</h3>
+                <p>الهدف هو حماية المحيطات والأنهار واستخدام الموارد البحرية بشكل مستدام، مثل الحفاظ على نظافة المجاري المائية والأنهار المحلية من التلوث. </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/4Fc1l4SmbNI?si=-Hvhu1dNtlnemjOf" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/Screenshot 2025-12-01 010518.png" alt="الهدف 15">
+                <h3>الحياة في البر</h3>
+                <p> الهدف هو حماية النظم الإيكولوجية البرية والحفاظ على التنوع البيولوجي، مثل دعم محميات الغابات في عجلون والحفاظ على الأشجار والحياة البرية.   </p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/16.png" alt="الهدف 16">
+                <h3س>السلام والعدل والمؤسسات القوية </h3>
+                <p>الهدف هو تعزيز مجتمعات سلمية وشاملة وتمكين الجميع من الوصول إلى العدالة، مثل إنشاء مراكز شبابية لتعليم حقوق الإنسان ومبادئ العدالة والمواطنة.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/XNDib3KMC-4?si=Zl2raIW0m7E7pwIc" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+            <div class="feature-item">
+                <img src="images/17.png" alt="الهدف 17">
+                <h3> الشراكات لتحقيق الأهداف</h3>
+                <p> الهدف هو تعزيز التعاون العالمي والشراكات لتحقيق التنمية المستدامة، مثل تعاون البلديات والجمعيات البيئية لتنفيذ مشاريع مشتركة في الزراعة والطاقة النظيفة.</p>
+                <!-- زر الفيديو — ضع الرابط الفعلي بدل VIDEO_ID -->
+                <a class="btn btn-video" href="https://youtu.be/QiZOfen3xSI?si=UrX-Jn8mUvJyk8mA" target="_blank" rel="noopener">مشاهدة الفيديو</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم مشروعي المستدام -->
+    <section class="sustainable-project" id="sustainable">
+        <div class="project-container">
+            <!-- removed logo image -->
+            <div class="project-content">
+                <h2>مشروعي المستدام</h2>
+                <p>هذا المشروع يمثل التزامنا بتطبيق مبادئ الاستدامة في حياتنا اليومية. نعمل على تقليل البصمة الكربونية، والحفاظ على الموارد الطبيعية، وبناء مستقبل أخضر للأجيال القادمة.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_fU2GUnmRRbvm7KHAO_nCVAIPiBozs8aGVcoMO7oWgCmYPA/viewform?pli=1" target="_blank" class="btn btn-primary">ملء النموذج</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التحدي الشهري -->
+    <section class="monthly-challenge" id="challenge">
+        <div class="challenge-container">
+            <div class="challenge-content">
+                <h2>التحدي الشهري</h2>
+                <h3>تحدي هذا الشهر: تقليل استهلاك الماء</h3>
+                <p>حاول تقليل استهلاك الماء في منزلك بنسبة 20% خلال هذا الشهر. شارك إنجازاتك معنا من خلال ملء النموذج أدناه.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_fU2GUnmRRbvm7KHAO_nCVAIPiBozs8aGVcoMO7oWgCmYPA/viewform?pli=1" target="_blank" class="btn btn-secondary">شارك التحدي</a>
+            </div>
+            <img src="images/تقليل استهلاك الماء.png" alt="صورة التحدي الشهري" class="challenge-image">
+        </div>
+    </section>
+
+    <!-- قسم الخريطة -->
+    <section class="map-section" id="map">
+        <h2>موقعنا في عجلون</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.5123456789!2d35.7426!3d32.3389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c5a1b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sAjloun!5e0!3m2!1sen!2sjo!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- قسم أبرز المتفاعلين -->
+    <section class="top-participants" id="participants">
+        <h2>أبرز المتفاعلين هذا الشهر</h2>
+        <div class="participants-gallery">
+	<div class="participant-gallery-item">
+		<div class="participant-image-container">
+			<img src="imges/participant1.jpg" alt="طالبة النور">
+		</div>
+		<div class="participant-info">
+			<h3>اسم المنفذ أو اسم</h3>
+			<p class="school">المدرسة</p>
+			<p class="description">وصف</p>
++			<a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/viewform" target="_blank" class="btn btn-project-form">انقر لمشاهدة إنجازاتهم</a>
+		</div>
+	</div>
+
+	<div class="participant-gallery-item">
+		<div class="participant-image-container">
+			<img src="imges/participant2.jpg" alt="فاطمة الأحمد">
+		</div>
+		<div class="participant-info">
+			<h3>اسم المنفذ أو اسم</h3>
+			<p class="school">المدرسة</p>
+			<p class="description">وصف</p>
++			<a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/viewform" target="_blank" class="btn btn-project-form">انقر لمشاهدة إنجازاتهم</a>
+		</div>
+	</div>
+
+	<div class="participant-gallery-item">
+		<div class="participant-image-container">
+			<img src="imges/participant3.jpg" alt="سارة محمود">
+		</div>
+		<div class="participant-info">
+			<h3>اسم المنفذ أو اسم</h3>
+			<p class="school">المدرسة</p>
+			<p class="description">وصف</p>
++			<a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/viewform" target="_blank" class="btn btn-project-form">انقر لمشاهدة إنجازاتهم</a>
+		</div>
+	</div>
+
+
+
+</div>
+    </section>
+
+    <!-- قسم مهمة الكوكب الأخضر (اللعبة التفاعلية) -->
+    <section id="green-mission" aria-label="مهمة الكوكب الأخضر" class="game-section">
+      <div class="game-wrapper">
+        <h1 class="game-title">تحدي أهداف الاستدامة 🌱🌍</h1>
+
+        <div class="game-box" role="application" aria-live="polite">
+          <div id="gm-timer" class="gm-timer">الوقت 15 ثانية</div>
+          <div id="gm-question" class="gm-question" aria-atomic="true"></div>
+          <div id="gm-options" class="gm-options" role="list"></div>
+          <div id="gm-score" class="gm-score" aria-live="polite"></div>
+        </div>
+
+        <div id="gm-alert" class="alert-box" role="status" aria-hidden="true"></div>
+
+        <div id="gm-end-screen" class="end-screen" aria-hidden="true">
+          <h2 id="gm-end-message"></h2>
+          <button id="gm-restart-btn" class="btn">اعادة اللعب 🔁</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم التذييل -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>تواصل معنا</h3>
+                <p>مدرسة كفرنجة الثانوية الشاملة للبنات</p>
+                <p>الموقع: عجلون، الأردن</p>
+                <p>البريد الإلكتروني sustainajloun.info@gmail.com</p>
+            </div>
+            <div class="social-media">
+                <a href="https://wa.me/962791234567" target="_blank" class="social-icon">
+                    <img src="imges/whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="https://www.facebook.com/kafarnaja" target="_blank" class="social-icon">
+                    <img src="imges/facebook_5968764.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/kafarnaja" target="_blank" class="social-icon">
+                    <img src="imges/instagram_2111463.png" alt="Instagram">
+                </a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 جميع الحقوق محفوظة لمدرسة كفرنجة الثانوية الشاملة للبنات</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // دالة تكبير وتصغير الخط
+        function changeFontSize(increase) {
+            var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span');
+            elements.forEach(function(element) {
+                var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+                if (increase) {
+                    element.style.fontSize = (currentSize + 1) + 'px';
+                } else {
+                    element.style.fontSize = (currentSize - 1) + 'px';
+                }
+            });
+        }
+
+        // دالة قراءة النص المحدد بالعربية والإنجليزية
+        function speakSelectedText() {
+            if ('speechSynthesis' in window) {
+                var selectedText = window.getSelection().toString();
+                if (selectedText.trim() === '') {
+                    alert('يرجى تحديد النص الذي تريد قراءته');
+                    return;
+                }
+
+                // التوقف عن أي قراءة سابقة
+                window.speechSynthesis.cancel();
+
+                // تقسيم النص إلى جمل عربية وإنجليزية
+                var textArray = selectedText.split(/(\s+)/);
+                var currentIndex = 0;
+
+                // دالة لقراءة الجزء التالي
+                function speakNextPart() {
+                    if (currentIndex >= textArray.length) {
+                        return;
+                    }
+
+                    var text = textArray[currentIndex];
+                    
+                    // تخطي المسافات الفارغة
+                    if (text.trim() === '') {
+                        currentIndex++;
+                        speakNextPart();
+                        return;
+                    }
+
+                    // تحديد لغة النص
+                    var isArabic = /[\u0600-\u06FF]/.test(text);
+                    var lang = isArabic ? 'ar-SA' : 'en-US';
+                    var rate = isArabic ? 0.9 : 1;
+
+                    var utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = lang;
+                    utterance.rate = rate;
+
+                    // عند انتهاء القراءة، اقرأ الجزء التالي
+                    utterance.onend = function() {
+                        currentIndex++;
+                        speakNextPart();
+                    };
+
+                    utterance.onerror = function() {
+                        currentIndex++;
+                        speakNextPart();
+                    };
+
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                // ابدأ القراءة من أول جزء
+                speakNextPart();
+            } else {
+                alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام');
+            }
+        }
+
+        // دالة إيقاف القراءة
+        function stopText() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+    </script>
+<script>
+  // عند النقر على أي رابط في شريط التنقل، أضف class لعرض النبتة مؤقتاً
+  (function() {
+    var links = document.querySelectorAll('.nav-links li');
+    links.forEach(function(li) {
+      var a = li.querySelector('a');
+      if (!a) return;
+      a.addEventListener('click', function() {
+        // أزل أي class موجود مسبقاً لتجنب تراكم
+        links.forEach(function(item){ item.classList.remove('grow'); });
+        // أضف الفئة الحالية لتشغيل الحركة على العنصر المضغوط
+        li.classList.add('grow');
+        // ازلها بعد مدة قصيرة لتسمح بتكرار الحركة لاحقاً
+        setTimeout(function(){ li.classList.remove('grow'); }, 800);
+        // لا نمنع الحدث الافتراضي حتى يتم الانتقال للطريقة العادية (anchors)
+      });
+    });
+  })();
+</script>
+<script>
+	(function() {
+	 var toggle = document.querySelector('.nav-toggle');
+	 var menu = document.getElementById('primary-menu');
+
+	 if (!toggle || !menu) return;
+
+	 function setExpanded(state) {
+	   toggle.setAttribute('aria-expanded', String(state));
+	   if (state) menu.classList.add('open');
+	   else menu.classList.remove('open');
+	 }
+
+	 toggle.addEventListener('click', function(e) {
+	   var expanded = toggle.getAttribute('aria-expanded') === 'true';
+	   setExpanded(!expanded);
+	 });
+
+	 // Close menu when a link is clicked (mobile)
+	 menu.querySelectorAll('a').forEach(function(a) {
+	   a.addEventListener('click', function() {
+		 setExpanded(false);
+	   });
+	 });
+
+	 // Close menu on outside click (mobile)
+	 document.addEventListener('click', function(e) {
+	   if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+		 setExpanded(false);
+	   }
+	 });
+
+	 // Close on escape
+	 document.addEventListener('keydown', function(e) {
+	   if (e.key === 'Escape') setExpanded(false);
+	 });
+	})();
+	</script>
+<!-- أضف هذا السكربت قبل نهاية </body> -->
+<script>
+/* filepath: c:\Users\user\OneDrive\Desktop\sustainajloun\index.html (script addition) */
+document.addEventListener('DOMContentLoaded', function () {
+  // Enable JS-driven animations only when JS is available
+  document.body.classList.add('animate');
+
+  var about = document.getElementById('about');
+  if (!about) return;
+
+  var items = about.querySelectorAll('.fly-item');
+  items.forEach(function(el, i){
+    // set stagger delay (will be used by CSS transition)
+    el.style.transitionDelay = (i * 80) + 'ms';
+    el.style.willChange = 'transform, opacity';
+  });
+
+  var io = new IntersectionObserver(function(entries, observer){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        about.classList.add('in-view');
+        // trigger once
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  io.observe(about);
+});
+</script>
+<!-- أضف هذا السكربت قبل نهاية </body> -->
+<script>
+/* filepath: c:\Users\user\OneDrive\Desktop\sustainajloun\index.html (game script) */
+(function(){
+  // بيانات اللعبة (كما في ملف اللعبة المدمج)
+  const goals = [
+    "القضاء على الفقر","القضاء على الجوع","الصحة الجيدة والرفاه","التعليم الجيد",
+    "المساواة بين الجنسين","المياه النظيفة والنظافة الصحية","الطاقة النظيفة وبأسعار معقولة",
+    "العمل اللائق ونمو الاقتصاد","الصناعة والابتكار والبنية التحتية","الحد من اوجه عدم المساواة",
+    "المدن والمجتمعات المستدامة","الاستهلاك والانتاج المسؤولان","العمل المناخي",
+    "الحياة تحت الماء","الحياة في البر","السلام والعدل والمؤسسات القوية","الشراكات لتحقيق الاهداف"
+  ];
+
+  const questions = [
+    { q:"ما الهدف الذي يركز على انهاء الفقر", a:"القضاء على الفقر" },
+    { q:"أي هدف يعمل على القضاء على الجوع عالمياً", a:"القضاء على الجوع" },
+    { q:"أي هدف يسعى لتحسين صحة الإنسان ورفاهيته", a:"الصحة الجيدة والرفاه" },
+    { q:"أي هدف يهدف لرفع جودة التعليم للجميع", a:"التعليم الجيد" },
+    { q:"أي هدف يركز على حماية الحياة البرية", a:"الحياة في البر" },
+    { q:"ما الهدف الذي يعالج مسألة تغير المناخ", a:"العمل المناخي" },
+    { q:"أي هدف يعزز حصول الجميع على مياه نظيفة", a:"المياه النظيفة والنظافة الصحية" },
+    { q:"ما الهدف الذي يحمي المحيطات والبحار", a:"الحياة تحت الماء" },
+    { q:"أي هدف يسعى لتطوير الصناعة والابتكار", a:"الصناعة والابتكار والبنية التحتية" },
+    { q:"أي هدف يعزز المدن والمجتمعات المستدامة", a:"المدن والمجتمعات المستدامة" },
+    { q:"أي هدف يركز على الشراكات لتحقيق الأهداف", a:"الشراكات لتحقيق الاهداف" },
+    { q:"أي هدف يعمل على المساواة بين الجنسين", a:"المساواة بين الجنسين" }
+  ];
+
+  // DOM
+  const qEl = document.getElementById("gm-question");
+  const optEl = document.getElementById("gm-options");
+  const timerEl = document.getElementById("gm-timer");
+  const scoreEl = document.getElementById("gm-score");
+  const endScreen = document.getElementById("gm-end-screen");
+  const endMsg = document.getElementById("gm-end-message");
+  const alertBox = document.getElementById("gm-alert");
+  const restartBtn = document.getElementById("gm-restart-btn");
+
+  let currentIndex = 0, score = 0, timer, timeLeft = 15;
+
+  function startGame(){
+    currentIndex = 0; score = 0;
+    shuffleArray(questions);
+    endScreen.style.display = "none"; endScreen.setAttribute('aria-hidden','true');
+    document.querySelector("#green-mission .game-box").style.display = "block";
+    scoreEl.textContent = `النتيجة ${score}`;
+    hideAlert();
+    loadQuestion();
+  }
+
+  function loadQuestion(){
+    if(currentIndex >= questions.length){ endGame(); return; }
+    const q = questions[currentIndex];
+    qEl.textContent = q.q;
+    optEl.innerHTML = "";
+    let options = [q.a];
+    while(options.length < 4){
+      let randomGoal = goals[Math.floor(Math.random()*goals.length)];
+      if(!options.includes(randomGoal)) options.push(randomGoal);
+    }
+    shuffleArray(options);
+    options.forEach(opt=>{
+      const btn = document.createElement("div");
+      btn.className = "option";
+      btn.setAttribute('role','button');
+      btn.tabIndex = 0;
+      btn.textContent = opt;
+      btn.onclick = ()=> checkAnswer(opt, btn);
+      btn.onkeypress = (e)=>{ if(e.key==='Enter') checkAnswer(opt, btn); };
+      optEl.appendChild(btn);
+    });
+    resetTimer();
+  }
+
+  function resetTimer(){
+    clearInterval(timer);
+    timeLeft = 15;
+    timerEl.textContent = `الوقت ${timeLeft} ثانية`;
+    timer = setInterval(()=>{
+      timeLeft--;
+      timerEl.textContent = `الوقت ${timeLeft} ثانية`;
+      if(timeLeft <=0){
+        clearInterval(timer);
+        markWrong(null);
+        showAlert("انتهى الوقت حاول تركز شوي");
+        currentIndex++;
+        setTimeout(loadQuestion, 1000);
+      }
+    },1000);
+  }
+
+  function checkAnswer(answer, btn){
+    clearInterval(timer);
+    const correct = questions[currentIndex].a;
+    if(answer === correct){
+      btn.classList.add("correct"); score++; scoreEl.textContent = `النتيجة ${score}`;
+    } else {
+      btn.classList.add("wrong"); markWrong(correct); showAlert("اجابة خاطئة");
+    }
+    setTimeout(()=>{ currentIndex++; loadQuestion(); },800);
+  }
+
+  function markWrong(correct){
+    if(correct){
+      Array.from(document.getElementsByClassName("option")).forEach(opt=>{
+        if(opt.textContent === correct) opt.classList.add("correct");
+      });
+    }
+  }
+
+  function endGame(){
+    document.querySelector("#green-mission .game-box").style.display = "none";
+    endScreen.style.display = "block"; endScreen.setAttribute('aria-hidden','false');
+    if(score > 6) endMsg.textContent = `لقد اجبت على ${score} اسئلة صحيحة تهانينا انت ملك الاستدامة 🏆`;
+    else endMsg.textContent = `لقد اجبت على ${score} اسئلة صح لا تحزن جرب مرة اخرى 😂`;
+  }
+
+  function showAlert(message){ alertBox.textContent = message; alertBox.style.display = "block"; alertBox.setAttribute('aria-hidden','false'); setTimeout(hideAlert,2000); }
+  function hideAlert(){ alertBox.style.display = "none"; alertBox.setAttribute('aria-hidden','true'); }
+
+  function shuffleArray(array){ for(let i=array.length-1;i>0;i--){ let j=Math.floor(Math.random()*(i+1)); [array[i],array[j]] = [array[j],array[i]]; } }
+
+  restartBtn.addEventListener('click', startGame);
+  document.querySelector('#green-mission .game-title')?.addEventListener('click', startGame); // optional trigger
+
+  // respect reduced-motion
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('#green-mission .option').forEach(el=> el.style.transition='none');
+  }
+})();
+</script>
+<!-- أضف هذا السكربت قبل نهاية </body> (ضمن ملف index.html) -->
+<script>
+/* filepath: c:\Users\user\OneDrive\Desktop\sustainajloun\index.html (project links script) */
+(function(){
+  function initProjectButtons(){
+    document.querySelectorAll('.project-link-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item = btn.closest('.participant-gallery-item');
+        if(!item) return;
+        var linkEl = item.querySelector('.project-link');
+        var current = (linkEl && linkEl.getAttribute('href') && linkEl.getAttribute('href') !== '#') ? linkEl.getAttribute('href') : '';
+        var url = prompt('ألصق رابط Google Drive أو رابط المشروع هنا (يبدأ بـ https://):', current);
+        if(url === null) return; // user cancelled
+        url = url.trim();
+        if(!url) {
+          // remove existing link
+          if(linkEl){ linkEl.style.display='none'; linkEl.setAttribute('href','#'); }
+          btn.textContent = 'أضف رابط المشروع';
+          btn.classList.remove('has-link');
+          return;
+        }
+        if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+        if(!linkEl){
+          linkEl = document.createElement('a');
+          linkEl.className = 'project-link';
+          linkEl.target = '_blank';
+          linkEl.rel = 'noopener';
+          btn.insertAdjacentElement('afterend', linkEl);
+        }
+        linkEl.href = url;
+        linkEl.textContent = 'عرض المشروع';
+        linkEl.style.display = 'inline-block';
+        btn.textContent = 'تحديث رابط المشروع';
+        btn.classList.add('has-link');
+      });
+    });
+  }
+
+  // init on DOM ready
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initProjectButtons);
+  } else {
+    initProjectButtons();
+  }
+})();
+</script>
+<script>
+/* تعميم حركة "fly" على عناصر كثيرة مع stagger داخل كل section */
+document.addEventListener('DOMContentLoaded', function () {
+  // عناصر مستهدفة لإضافة الحركة (لا تغير DOM يدوياً)
+  var selectors = [
+    'h1','h2','h3','p',
+    '.feature-item',
+    '.participant-gallery-item',
+    '.team-member',
+    '.project-content',
+    '.challenge-content',
+    '.map-container',
+    '.participants-gallery',
+    '.features-grid',
+    '.hero-image',
+    '.game-box',
+    '.footer-container'
+  ];
+
+  // اجمع العناصر الفريدة
+  var nodes = [];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      if (!nodes.includes(el)) nodes.push(el);
+    });
+  });
+
+  // أضف الفئة fly-item فقط إذا لم تكن موجودة
+  nodes.forEach(function(el){
+    if (!el.classList.contains('fly-item')) el.classList.add('fly-item');
+    el.style.willChange = 'transform, opacity';
+  });
+
+  // جمع حسب القسم لأجل stagger
+  var groups = new Map();
+  nodes.forEach(function(el){
+    var section = el.closest('section') || document.body;
+    if (!groups.has(section)) groups.set(section, []);
+    groups.get(section).push(el);
+  });
+
+  // ضبط transition-delay لكل عنصر داخل مجموعته
+  groups.forEach(function(list){
+    list.forEach(function(el, i){
+      var base = 70; // ms
+      var jitter = (Math.random()*30)-15; // -15..+15
+      el.style.transitionDelay = (i * base + jitter) + 'ms';
+      // ensure starting state visible for non-JS users handled by CSS prefers-reduced-motion
+    });
+  });
+
+  // IntersectionObserver يراقب الأقسام ويضيف class "in" لعناصرهم عند الظهور
+  var io = new IntersectionObserver(function(entries, observer){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        var section = entry.target;
+        var items = section.querySelectorAll('.fly-item');
+        items.forEach(function(it){ it.classList.add('in'); });
+        observer.unobserve(section);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  // راقب كل section يحتوي عناصر قابلة للتحريك
+  groups.forEach(function(_, section){
+    // إذا section هو document.body، امنح العناصر مباشرة إذا ظهرت أي منها
+    if (section === document.body) {
+      // نراقب أول عنصر في المجموعة بدلاً من whole body
+      var first = groups.get(section)[0];
+      if (first) io.observe(first);
+    } else {
+      io.observe(section);
+    }
+  });
+
+  // Accessibility: إذا المستخدم فضل تقليل الحركة، اجعل العناصر مباشرة في الحالة النهائية
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.fly-item').forEach(function(el){
+      el.classList.add('in');
+      el.style.transitionDelay = '0ms';
+    });
+  }
+});
+</script>
+
+</body>
+</html>
