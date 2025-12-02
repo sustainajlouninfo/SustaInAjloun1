@@ -45,7 +45,7 @@ body {
 /* عنوان صغير على اليمين (يمكن إخفاؤه إذا لم ترغب به) */
 .nav-title {
   display: block;
-  color: #229e03;
+  color: #0a8b35;
   font-weight: 700;
   font-size: 1rem;
   opacity: 0.95;
@@ -64,7 +64,7 @@ body {
 }
 
 .nav-links a {
-  color: rgba(16, 117, 3, 0.95);
+  color: rgba(27, 134, 5, 0.95);
   text-decoration: none;
   padding: 0.5rem 0.6rem;
   border-radius: 6px;
@@ -651,92 +651,183 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* قسم أبرز المتفاعلين */
+/* قسم أبرز المتفاعلين - معرض أفقي */
 .top-participants {
   padding: 3rem 2rem;
-  background-color: #f1f8e9;
+  background: linear-gradient(135deg, #f1f8e9, #e0f7e4);
 }
 
 .top-participants h2 {
   text-align: center;
-  color: #2e7d32;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  color: #1b5e20;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.08);
 }
 
+/* معرض أفقي */
 .participants-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  gap: 1.8rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+  max-width: 100%;
 }
 
-.participant-gallery-item {
-  background-color: white;
+/* إزالة الـ scrollbar القبيح */
+.participants-gallery::-webkit-scrollbar {
+  height: 10px;
+}
+
+.participants-gallery::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
   border-radius: 10px;
+}
+
+.participants-gallery::-webkit-scrollbar-thumb {
+  background: rgba(46,125,50,0.3);
+  border-radius: 10px;
+}
+
+/* البطاقات داخل المعرض */
+.participant-gallery-item {
+  flex: 0 0 300px; /* كل بطاقة بعرض ثابت */
+  background: #ffffff;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
 }
 
 .participant-gallery-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
 
 .participant-image-container {
   width: 100%;
   height: 250px;
   overflow: hidden;
-  background-color: #e0e0e0;
+  border-bottom: 2px solid #aed581;
+  background: #dcedc8;
+  position: relative;
 }
 
 .participant-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
 }
 
 .participant-gallery-item:hover .participant-image-container img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .participant-info {
-  padding: 1.5rem;
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .participant-info h3 {
   color: #2e7d32;
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .participant-info .school {
-  color: #666;
-  font-size: 0.9rem;
+  color: #555;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
 }
 
 .participant-info .description {
-  color: #555;
+  color: #444;
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
-  min-height: 70px;
+  min-height: 80px;
 }
 
 .achievement-badge {
   display: inline-block;
-  background-color: #aed581;
+  background: linear-gradient(135deg, #aed581, #81c784);
   color: #1b5e20;
-  padding: 0.6rem 1.2rem;
-  border-radius: 20px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 0.9rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 22px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.achievement-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27,94,32,0.25);
+}
+
+/* أزرار المشروع */
+.participant-info .project-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-link-btn,
+.project-link,
+.btn-project-form {
+  transition: all 0.25s ease;
+}
+
+.project-link-btn:hover,
+.project-link:hover,
+.btn-project-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46,125,50,0.2);
+}
+
+/* تجاوب الهواتف */
+@media (max-width: 768px) {
+  .participant-gallery-item {
+    flex: 0 0 260px;
+  }
+
+  .participant-image-container {
+    height: 200px;
+  }
+
+  .participant-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .achievement-badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .participant-gallery-item {
+    flex: 0 0 220px;
+  }
+
+  .participant-image-container {
+    height: 180px;
+  }
+
+  .participant-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .participant-info .description {
+    font-size: 0.85rem;
+    min-height: 60px;
+  }
 }
 
 /* قسم التذييل */
@@ -770,20 +861,42 @@ body {
   gap: 1.5rem;
   flex-wrap: wrap;
 }
+/* الروابط في الفوتر */
+.social-media a {
+  color: white; /* لون النص أبيض */
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* مسافة بين النبتة والنص */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-media a:hover {
+  color: #aed581; /* لون أخضر فاتح عند التحويم */
+  transform: scale(1.05);
+}
+
+/* إضافة النبتة قبل كل رابط */
+.social-media a::before {
+  content: "🌿";
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+}
 
 .social-icon {
   display: inline-block;
 }
-
 .social-icon img {
   width: 40px;
   height: 40px;
-  transition: transform 0.3s ease;
-  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .social-icon:hover img {
   transform: scale(1.2);
+  filter: brightness(1.2); /* تضيف لمعان خفيف عند hover */
 }
 
 .footer-copyright {
