@@ -45,7 +45,7 @@ body {
 /* عنوان صغير على اليمين (يمكن إخفاؤه إذا لم ترغب به) */
 .nav-title {
   display: block;
-  color: #fff;
+  color: #229e03;
   font-weight: 700;
   font-size: 1rem;
   opacity: 0.95;
@@ -64,7 +64,7 @@ body {
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.95);
+  color: rgba(16, 117, 3, 0.95);
   text-decoration: none;
   padding: 0.5rem 0.6rem;
   border-radius: 6px;
